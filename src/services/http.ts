@@ -3,8 +3,8 @@ import { buildUrlParams } from "utils/url";
 
 export const callStockApi = (
   path: ApiPath,
-  options?: RequestInit,
-  searchParams?: Record<string, string>
+  searchParams?: Record<string, string>,
+  options?: RequestInit
 ) => {
   return fetch(
     `${STOCK_API_BASE_PATH}${path}${buildUrlParams({
