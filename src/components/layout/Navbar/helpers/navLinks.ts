@@ -1,15 +1,7 @@
 const navLinks = [
   {
-    name: "Dashboard",
+    name: "Stock listing",
     href: "/",
-  },
-  {
-    name: "Teams",
-    href: "/teams",
-  },
-  {
-    name: "Projects",
-    href: "/projects",
   },
 ];
 

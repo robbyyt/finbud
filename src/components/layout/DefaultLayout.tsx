@@ -9,7 +9,7 @@ const Layout: FC<ILayoutProps> = ({ children }) => {
   return (
     <>
       <Navbar />
-      <main className="p-6 sm:p-12">{children}</main>
+      <main className="p-6 sm:p-16">{children}</main>
     </>
   );
 };

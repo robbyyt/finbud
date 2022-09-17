@@ -41,11 +41,11 @@ const SymbolList: FC<SymbolListProps> = ({ searchValue }) => {
     );
   }
   return (
-    <>
+    <div className="w-full flex flex-col sm:grid sm:grid-cols-3 flex-wrap gap-4 sm:gap-8 mt-4">
       {symbols.map((symbol) => (
         <SymbolItem {...symbol} key={symbol.displaySymbol} />
       ))}
-    </>
+    </div>
   );
 };
 
