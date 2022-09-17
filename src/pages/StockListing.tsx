@@ -1,19 +1,20 @@
-import { FC, useState } from "react";
-import { useDebounce } from "use-debounce";
-import LoadingSpinner from "components/ui/LoadingSpinner";
+import { useState } from "react";
+import { useDebouncedCallback } from "use-debounce";
+
 import SearchInput from "components/form/SearchInput";
+import SymbolList from "components/stock-listing/SymbolList";
 
-const StockListing: FC = () => {
-  const [loading, setLoading] = useState(false);
+const StockListing = () => {
   const [searchValue, setSearchValue] = useState("");
-  const [value] = useDebounce(searchValue, 500);
+  const debouncedOnChange = useDebouncedCallback(
+    ({ target: { value } }) => setSearchValue(value),
+    500
+  );
 
-  if (loading) {
-    return <LoadingSpinner />;
-  }
   return (
-    <div className="flex justify-center">
-      <SearchInput input={searchValue} setInputValue={setSearchValue} />
+    <div className="flex flex-col items-center justify-center">
+      <SearchInput onChange={debouncedOnChange} />
+      <SymbolList searchValue={searchValue} />
     </div>
   );
 };

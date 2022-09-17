@@ -9,5 +9,5 @@ export const searchStockInfo = async (searchInput: string) => {
 
   const response = await callStockApi("/search", { q: searchInput });
 
-  return z.array(StockSymbolDTO).parseAsync(response);
+  return z.array(StockSymbolDTO).parseAsync(response?.result);
 };
