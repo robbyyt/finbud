@@ -13,7 +13,7 @@ const StockListing = () => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <SearchInput onChange={debouncedOnChange} />
+      <SearchInput onChange={debouncedOnChange} id="stock-search" />
       <SymbolList searchValue={searchValue} />
     </div>
   );
