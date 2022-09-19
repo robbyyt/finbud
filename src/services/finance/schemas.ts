@@ -11,12 +11,12 @@ export type StockSymbolType = z.infer<typeof StockSymbolDTO>;
 
 export const StockValueInfoDTO = z.object({
   s: z.enum(["ok", "no_data"]),
-  c: z.array(z.number()),
-  h: z.array(z.number()),
-  l: z.array(z.number()),
-  o: z.array(z.number()),
-  t: z.array(z.number()),
-  v: z.array(z.number()),
+  c: z.optional(z.array(z.number())),
+  h: z.optional(z.array(z.number())),
+  l: z.optional(z.array(z.number())),
+  o: z.optional(z.array(z.number())),
+  t: z.optional(z.array(z.number())),
+  v: z.optional(z.array(z.number())),
 });
 
 export type StockValueInfoType = z.infer<typeof StockValueInfoDTO>;
