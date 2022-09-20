@@ -1,17 +1,18 @@
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 
+import StockDetailsPage from "pages/StockDetails";
+import StockListingPage from "pages/StockListing";
+
 import DefaultLayout from "components/layout/DefaultLayout";
 import ErrorDialog from "components/ui/error/ErrorDialog";
-import LoadingSpinner from "components/ui/LoadingSpinner";
+import LazyLoadingFallback from "components/ui/LazyLoadingFallback";
 
 const NotFoundPage = lazy(() => import("./pages/NotFound"));
-const StockDetailsPage = lazy(() => import("./pages/StockDetails"));
-const StockListingPage = lazy(() => import("./pages/StockListing"));
 
 function App() {
   return (
-    <Suspense fallback={<LoadingSpinner />}>
+    <Suspense fallback={<LazyLoadingFallback />}>
       <DefaultLayout>
         <Routes>
           <Route path="/" element={<StockListingPage />} />

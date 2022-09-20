@@ -1,3 +1,18 @@
+# Finbud
+
+This is a sample project that uses the [finnhub](https://finnhub.io/) api to display some stock info.
+
+You can find the project hosted here: https://superlative-tulumba-04bb41.netlify.app/
+
+# Important Libraries used
+
+- `Tailwind & HeadlessUI` for styling.
+  - I chose to use these two because they can help quickstart an app but let you have control over the components you create rather than provide a lot of pre-made ones. Tailwind makes writing css easier, HeadlessUI makes creating some basic ui components easier.
+- `React Router` - the go-to in the industry for routing in react applications, it's the obvious choice.
+- `chart.js` - a charting library I had never tried before, wanted to see how it works. (I had only worked with `echarts` before)
+- `date-fns` - for easier date operations.
+- `zod` - also a library I was new to, I heard about it and used it to validate that the responses coming from the API respected a certain schema to avoid unexpected behaviour.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
