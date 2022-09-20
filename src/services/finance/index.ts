@@ -6,10 +6,19 @@ export const searchStockInfo = async (searchInput: string) => {
   if (!searchInput) {
     return;
   }
+  try {
+    const response = await callStockApi("/search", { q: searchInput });
 
-  const response = await callStockApi("/search", { q: searchInput });
+    if (response?.error) {
+      throw new Error(response?.error);
+    }
 
-  return z.array(StockSymbolDTO).parseAsync(response?.result);
+    return z.array(StockSymbolDTO).parseAsync(response?.result);
+  } catch (err) {
+    if (err instanceof z.ZodError)
+      throw new Error("A Validation error occured");
+    throw err;
+  }
 };
 
 export const getDataForStock = async (
@@ -18,12 +27,22 @@ export const getDataForStock = async (
   to: number,
   resolution: StockDataResolution = "D"
 ) => {
-  const response = await callStockApi("/stock/candle", {
-    symbol,
-    resolution,
-    from,
-    to,
-  });
+  try {
+    const response = await callStockApi("/stock/candle", {
+      symbol,
+      resolution,
+      from,
+      to,
+    });
 
-  return StockValueInfoDTO.parseAsync(response);
+    if (response?.error) {
+      throw new Error(response?.error);
+    }
+
+    return StockValueInfoDTO.parse(response);
+  } catch (err) {
+    if (err instanceof z.ZodError)
+      throw new Error("A Validation error occured");
+    throw err;
+  }
 };
