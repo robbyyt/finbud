@@ -99,7 +99,9 @@ const StockValuesChart: FC<StockValuesChartProps> = ({
   }
 
   return (
-    <Line options={chartOptions} data={getFormattedChartData(stockData)} />
+    <div className="w-full lg:w-8/12">
+      <Line options={chartOptions} data={getFormattedChartData(stockData)} />
+    </div>
   );
 };
 
