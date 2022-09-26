@@ -17,14 +17,16 @@ const SymbolList: FC<SymbolListProps> = ({ searchValue }) => {
 
   useEffect(() => {
     (async () => {
-      try {
-        setLoading(true);
-        const apiResponse = await searchStockInfo(searchValue);
-        setSymbols(apiResponse || []);
-      } catch (err) {
-        setError(buildError(err));
-      } finally {
-        setLoading(false);
+      if (searchValue) {
+        try {
+          setLoading(true);
+          const apiResponse = await searchStockInfo(searchValue);
+          setSymbols(apiResponse || []);
+        } catch (err) {
+          setError(buildError(err));
+        } finally {
+          setLoading(false);
+        }
       }
     })();
   }, [searchValue, setError]);
